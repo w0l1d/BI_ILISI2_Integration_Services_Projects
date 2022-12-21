@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="25"
-  DTS:VersionGUID="{E92A29B9-0C1F-4C4A-9A88-0ECD8358D9A2}">
+  DTS:VersionBuild="30"
+  DTS:VersionGUID="{E86099C0-54C1-42E1-8DC6-C3CF5E06D268}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -704,7 +704,7 @@
                       expressionType="Notify"
                       name="SqlCommandParam"
                       UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[D_Customer]) [refTable]
-where [refTable].[CustomerIDSource] = ? and [refTable].[From] = ?</property>
+where [refTable].[CustomerIDSource] = ? and [refTable].[AccountNumber] = ?</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the type of connection used to access the reference dataset."
@@ -740,7 +740,7 @@ where [refTable].[CustomerIDSource] = ? and [refTable].[From] = ?</property>
                       containsID="true"
                       dataType="System.String"
                       description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
-                      name="ParameterMap">#{Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[CustomerID]};#{Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[ModifiedDate]};</property>
+                      name="ParameterMap">#{Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[CustomerID]};#{Package\Remplir d_Customer\Load Customers\Converte Account Number.Outputs[Data Conversion Output].Columns[AccountNumberConverti]};</property>
                     <property
                       dataType="System.Int32"
                       description="Specifies the column code page to use when code page information is unavailable from the data source."
@@ -780,15 +780,16 @@ where [refTable].[CustomerIDSource] = ? and [refTable].[From] = ?</property>
                           </properties>
                         </inputColumn>
                         <inputColumn
-                          refId="Package\Remplir d_Customer\Load Customers\Lookup.Inputs[Lookup Input].Columns[ModifiedDate]"
-                          cachedDataType="dbTimeStamp"
-                          cachedName="ModifiedDate"
-                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[ModifiedDate]">
+                          refId="Package\Remplir d_Customer\Load Customers\Lookup.Inputs[Lookup Input].Columns[AccountNumberConverti]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="AccountNumberConverti"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Outputs[Data Conversion Output].Columns[AccountNumberConverti]">
                           <properties>
                             <property
                               dataType="System.String"
                               description="Specifies the column in the reference table that a column joins."
-                              name="JoinToReferenceColumn">From</property>
+                              name="JoinToReferenceColumn">AccountNumber</property>
                             <property
                               dataType="System.Null"
                               description="Specifies the column in the reference table from which a column is copied."
@@ -1576,7 +1577,7 @@ where [refTable].[CustomerIDSource] = ? and [refTable].[From] = ?</property>
           <DTS:ObjectData>
             <SQLTask:SqlTaskData
               SQLTask:Connection="{2BB2CE65-4316-40E6-8412-8197B63FBFA3}"
-              SQLTask:SqlStatementSource="update D_Customer &#xA;  set FirstName = sta.FirstName,&#xA;  LastName = sta.LastName&#xA;  from [DB_Staging].[dbo].[D_Customer_STA] sta where sta.ID_Customer = D_Customer.ID_Customer;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              SQLTask:SqlStatementSource="update D_Customer &#xA;  set [To] = sta.ModifiedDate&#xA;  from [DB_Staging].[dbo].[D_Customer_STA] sta &#xA;  where sta.ID_Customer = D_Customer.ID_Customer&#xA;  and [To] is null;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
