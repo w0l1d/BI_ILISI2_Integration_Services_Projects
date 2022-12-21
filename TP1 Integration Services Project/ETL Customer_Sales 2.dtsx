@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="24"
-  DTS:VersionGUID="{56E2775A-029D-41B4-8EF6-D04B3F81CA3C}">
+  DTS:VersionBuild="25"
+  DTS:VersionGUID="{E92A29B9-0C1F-4C4A-9A88-0ECD8358D9A2}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1623,33 +1623,33 @@ where [refTable].[CustomerIDSource] = ? and [refTable].[From] = ?</property>
         <NodeLayout
           Size="339,42"
           Id="Package\Remplir d_Customer\Update D_Custumers from DB_Staging(Customer_STA)"
-          TopLeft="33,249" />
+          TopLeft="33,248" />
         <EdgeLayout
           Id="Package\Remplir d_Customer.PrecedenceConstraints[Constraint]"
           TopLeft="185.5,191">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="17,58"
+              EndConnector="17,57"
               Start="0,0"
-              End="17,50.5">
+              End="17,49.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25" />
+                    End="0,24.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,25"
-                    Point2="0,29"
-                    Point3="4,29" />
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="4,28.5" />
                   <mssgle:LineSegment
-                    End="13,29" />
+                    End="13,28.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="13,29"
-                    Point2="17,29"
-                    Point3="17,33" />
+                    Point1="13,28.5"
+                    Point2="17,28.5"
+                    Point3="17,32.5" />
                   <mssgle:LineSegment
-                    End="17,50.5" />
+                    End="17,49.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
