@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">UNKNOWN-HOST</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABld/dFnMU0qJk6N5TvLc3AAAAAACAAAAAAAQZgAAAAEAACAAAAAVOrRSMdhzIJJx67GnfEiXgwJAReCZR8K2Tt0GJom8KQAAAAAOgAAAAAIAACAAAAAvCCl5ytfdvRmRgWEeAxGlTUlLFXPOhogjMdrqkxfKe5AAAADgOFkypN5j03/LlBL2oqwUtjcfMlYoq6uYAYhAgHF1Jhbh9DQtnHoMO/GotyTKHQjWy3hLlmPSKOUi6dQxci3XJNp5yCDxBMPg3CESZWaWZ9boTNGrJdbGNWvnXApB5GoT1szhLaGjGPSrGdlTuYPu7pM6TW08xt8ESfVBcmGBnP9EXA7FB/9nr7tXlNYif5lAAAAAuIUfhLSMgYBjelJNzeyzszEjJrkGPYkqfxwEVl9sPhx3XvfT+OTzet8GAqNuNxAoYca4w5mEEp4zowJpBkW+gg==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAABld/dFnMU0qJk6N5TvLc3AAAAAACAAAAAAAQZgAAAAEAACAAAADlazDrbL/seuZP2h+6Xrqb06ZiaW+IDjkBSA02OGcVwgAAAAAOgAAAAAIAACAAAAAGQh0B7doXVgh2CWJ8uH119Impu9r91Rgul3AdiIxZa5AAAAB6p2hMLpiSbcGITTUJaAOKjhZ2WMGdpEvWwJDG7N8jWFk055K3QAcdGU+AYFf0R8IFMRkrUAT3gR29ANkaNNnJtw1Ha6u0S1oyOfCutYko+Tbdrlc20ue7lpdLmQIu+/N1ypKgOMGlI+oD+xcfAP+SzoouMoeAHmG3xH2OCLkxaSEUNneLCFQg5QVOrXa6YIpAAAAAxAnfxENxdFRaHyQOn5pdCOJPccT/b0pclSajNSjBZGdYhDU7GYCEowf+7B8yplTIHfB1CVNPFoDc2DglmVq1MQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -950,10 +950,10 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">20</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">32</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{AF47476D-26FB-422B-A4AF-98924FE909AA}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2EB093AD-5F3F-43A1-877A-8959728CD8C1}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -1134,7 +1134,7 @@
                     <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                     <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                    <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=Data Warehouse;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+                    <SSIS:Property SSIS:Name="Value">Data Source=.;Initial Catalog=Data Warehouse;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Package1-{2BB2CE65-4316-40E6-8412-8197B63FBFA3}LocalHost.Data Warehouse;</SSIS:Property>
                     <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
                   </SSIS:Properties>
                 </SSIS:Parameter>
@@ -1560,10 +1560,10 @@
                 <SSIS:Property SSIS:Name="Name">TP1 Package</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">27</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">28</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{72B0E645-8859-400E-AF93-EBB1F197E62E}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{72F57B24-5FDB-49E0-9890-6942A95BA9BD}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
