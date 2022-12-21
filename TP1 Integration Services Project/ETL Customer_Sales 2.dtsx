@@ -1,0 +1,2053 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/14/2022 10:23:41 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="UNKNOWN-HOST"
+  DTS:CreatorName="UNKNOWN-HOST\W0L1D"
+  DTS:DTSID="{E70DCECB-8641-46EC-9271-46E156AD3E51}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.948.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="24"
+  DTS:VersionGUID="{56E2775A-029D-41B4-8EF6-D04B3F81CA3C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.AdventureWorks]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{F3D3D808-4E9D-4D31-BCE7-AC22CA54ABC8}"
+      DTS:ObjectName="LocalHost.AdventureWorks">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=AdventureWorks;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Data Warehouse]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2BB2CE65-4316-40E6-8412-8197B63FBFA3}"
+      DTS:ObjectName="LocalHost.Data Warehouse">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Data Warehouse;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Data Warehouse 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{6A5AA61D-DDCF-4EFD-9EB8-A3EE965F0100}"
+      DTS:ObjectName="LocalHost.Data Warehouse 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Data Warehouse;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{6A5AA61D-DDCF-4EFD-9EB8-A3EE965F0100}LocalHost.Data Warehouse 1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.DB_Staging]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{43ECC4AA-1A24-47F3-8CD0-DD2F3B6F4AC2}"
+      DTS:ObjectName="LocalHost.DB_Staging">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=DB_Staging;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Remplir d_Customer"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{B443C69B-0CAA-4EC4-9633-B642880D46A1}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Remplir d_Customer">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Remplir d_Customer\Load Customers"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{A1C39C9F-58F2-4102-BE8F-81B09AB158CF}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load Customers"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Remplir d_Customer\Load Customers\Converte Account Number"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Converte Account Number"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Inputs[Data Conversion Input].Columns[AccountNumber]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="AccountNumber"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[AccountNumber]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Outputs[Data Conversion Output].Columns[AccountNumberConverti]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="10"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Outputs[Data Conversion Output].Columns[AccountNumberConverti]"
+                          name="AccountNumberConverti"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[AccountNumber]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Remplir d_Customer\Load Customers\Customer_src"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Customer_src"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Sales].[Customer]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Remplir d_Customer\Load Customers\Customer_src.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.AdventureWorks]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.AdventureWorks]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                          name="CustomerID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[PersonID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].ExternalColumns[PersonID]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[PersonID]"
+                          name="PersonID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[AccountNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].ExternalColumns[AccountNumber]"
+                          length="10"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[AccountNumber]"
+                          name="AccountNumber"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[ModifiedDate]"
+                          name="ModifiedDate"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                          dataType="i4"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].ExternalColumns[PersonID]"
+                          dataType="i4"
+                          name="PersonID" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].ExternalColumns[StoreID]"
+                          dataType="i4"
+                          name="StoreID" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].ExternalColumns[TerritoryID]"
+                          dataType="i4"
+                          name="TerritoryID" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].ExternalColumns[AccountNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          name="AccountNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                          name="CustomerID" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Error Output].Columns[PersonID]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Error Output].Columns[PersonID]"
+                          name="PersonID" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Error Output].Columns[AccountNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Error Output].Columns[AccountNumber]"
+                          name="AccountNumber" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Error Output].Columns[ModifiedDate]"
+                          name="ModifiedDate" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Remplir d_Customer\Load Customers\Customer_STA"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Customer_STA"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[D_Customer_STA]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.DB_Staging]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.DB_Staging]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].Columns[LastName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="LastName"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[LastName]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="FirstName"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[FirstName]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].Columns[AccountNumberConverti]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="AccountNumberConverti"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].ExternalColumns[AccountNumber]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Outputs[Data Conversion Output].Columns[AccountNumberConverti]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                          cachedDataType="i4"
+                          cachedName="CustomerID"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIDSource]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[CustomerID]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].Columns[ID_Customer]"
+                          cachedDataType="i4"
+                          cachedName="ID_Customer"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].ExternalColumns[ID_Customer]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Lookup.Outputs[Lookup Match Output].Columns[ID_Customer]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[ModifiedDate]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].ExternalColumns[ID_Customer]"
+                          dataType="i4"
+                          name="ID_Customer" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIDSource]"
+                          dataType="i4"
+                          name="CustomerIDSource" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                          dataType="wstr"
+                          length="50"
+                          name="FirstName" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                          dataType="wstr"
+                          length="50"
+                          name="LastName" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].ExternalColumns[AccountNumber]"
+                          dataType="wstr"
+                          length="10"
+                          name="AccountNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_STA.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Customer_STA.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_STA.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Remplir d_Customer\Load Customers\D_Customer"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="D_Customer"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[D_Customer]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Remplir d_Customer\Load Customers\D_Customer.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.Data Warehouse]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.Data Warehouse]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].Columns[LastName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="LastName"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[LastName]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].Columns[FirstName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="FirstName"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[FirstName]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                          cachedDataType="i4"
+                          cachedName="CustomerID"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIDSource]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[CustomerID]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].Columns[AccountNumberConverti]"
+                          cachedDataType="wstr"
+                          cachedLength="10"
+                          cachedName="AccountNumberConverti"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].ExternalColumns[AccountNumber]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Outputs[Data Conversion Output].Columns[AccountNumberConverti]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].ExternalColumns[From]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[ModifiedDate]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].ExternalColumns[ID_Customer]"
+                          dataType="i4"
+                          name="ID_Customer" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].ExternalColumns[CustomerIDSource]"
+                          dataType="i4"
+                          name="CustomerIDSource" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].ExternalColumns[FirstName]"
+                          dataType="wstr"
+                          length="50"
+                          name="FirstName" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
+                          dataType="wstr"
+                          length="50"
+                          name="LastName" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].ExternalColumns[AccountNumber]"
+                          dataType="wstr"
+                          length="10"
+                          name="AccountNumber" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].ExternalColumns[From]"
+                          dataType="dbTimeStamp"
+                          name="From" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input].ExternalColumns[To]"
+                          dataType="dbTimeStamp"
+                          name="To" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\D_Customer.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\D_Customer.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\D_Customer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\D_Customer.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Remplir d_Customer\Load Customers\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from [dbo].[D_Customer]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">select * from (select * from [dbo].[D_Customer]) [refTable]
+where [refTable].[CustomerIDSource] = ? and [refTable].[From] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID_Customer" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CustomerIDSource" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FirstName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="LastName" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="AccountNumber" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="From" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="To" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[CustomerID]};#{Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[ModifiedDate]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Remplir d_Customer\Load Customers\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.Data Warehouse]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.Data Warehouse]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Remplir d_Customer\Load Customers\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Lookup.Inputs[Lookup Input].Columns[CustomerID]"
+                          cachedDataType="i4"
+                          cachedName="CustomerID"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[CustomerID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">CustomerIDSource</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Lookup.Inputs[Lookup Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[ModifiedDate]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">From</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Remplir d_Customer\Load Customers\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Lookup.Outputs[Lookup Match Output].Columns[ID_Customer]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Lookup.Outputs[Lookup Match Output].Columns[ID_Customer]"
+                          name="ID_Customer"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">ID_Customer</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Remplir d_Customer\Load Customers\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Remplir d_Customer\Load Customers\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person"
+                  componentClassID="Microsoft.MergeJoin"
+                  contactInfo="Merge Join;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Combine two sorted data flows into one using the FULL, LEFT, or INNER join. We recommend this transformation when data flows can be sorted at their sources."
+                  name="Merge Cutomers-Person"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of join to perform."
+                      name="JoinType"
+                      typeConverter="JoinType">2</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the number of columns in the ordering key."
+                      name="NumKeyColumns">1</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the null values are treated as equal values."
+                      name="TreatNullsAsEqual">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Indicates the requested maximum buffers per input before blocking."
+                      name="MaxBuffersPerInput">5</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Left Input]"
+                      hasSideEffects="true"
+                      name="Merge Join Left Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Left Input].Columns[PersonID]"
+                          cachedDataType="i4"
+                          cachedName="PersonID"
+                          cachedSortKeyPosition="1"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output].Columns[PersonID]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Left Input].Columns[AccountNumber]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="AccountNumber"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output].Columns[AccountNumber]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Left Input].Columns[CustomerID]"
+                          cachedDataType="i4"
+                          cachedName="CustomerID"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output].Columns[CustomerID]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Left Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output].Columns[ModifiedDate]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Right Input]"
+                      hasSideEffects="true"
+                      name="Merge Join Right Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Right Input].Columns[BusinessEntityID]"
+                          cachedDataType="i4"
+                          cachedName="BusinessEntityID"
+                          cachedSortKeyPosition="1"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort.Outputs[Sort Output].Columns[BusinessEntityID]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Right Input].Columns[LastName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="LastName"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort.Outputs[Sort Output].Columns[LastName]" />
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Right Input].Columns[FirstName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="FirstName"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort.Outputs[Sort Output].Columns[FirstName]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output]"
+                      name="Merge Join Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[AccountNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[AccountNumber]"
+                          name="AccountNumber">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Left Input].Columns[AccountNumber]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[LastName]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[LastName]"
+                          name="LastName">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Right Input].Columns[LastName]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[FirstName]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[FirstName]"
+                          name="FirstName">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Right Input].Columns[FirstName]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[CustomerID]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[CustomerID]"
+                          name="CustomerID">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Left Input].Columns[CustomerID]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output].Columns[ModifiedDate]"
+                          name="ModifiedDate">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="The input column associated with this output column"
+                              name="InputColumnID">#{Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Left Input].Columns[ModifiedDate]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Remplir d_Customer\Load Customers\Person_src"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Person_src"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Person].[Person]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Remplir d_Customer\Load Customers\Person_src.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.AdventureWorks]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.AdventureWorks]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].Columns[LastName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                          length="50"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].Columns[LastName]"
+                          name="LastName"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].Columns[FirstName]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                          length="50"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].Columns[FirstName]"
+                          name="FirstName"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[BusinessEntityID]"
+                          dataType="i4"
+                          name="BusinessEntityID" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[PersonType]"
+                          dataType="wstr"
+                          length="2"
+                          name="PersonType" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[NameStyle]"
+                          dataType="bool"
+                          name="NameStyle" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[Title]"
+                          dataType="wstr"
+                          length="8"
+                          name="Title" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[FirstName]"
+                          dataType="wstr"
+                          length="50"
+                          name="FirstName" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[MiddleName]"
+                          dataType="wstr"
+                          length="50"
+                          name="MiddleName" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[LastName]"
+                          dataType="wstr"
+                          length="50"
+                          name="LastName" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[Suffix]"
+                          dataType="wstr"
+                          length="10"
+                          name="Suffix" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[EmailPromotion]"
+                          dataType="i4"
+                          name="EmailPromotion" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[AdditionalContactInfo]"
+                          dataType="nText"
+                          name="AdditionalContactInfo" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[Demographics]"
+                          dataType="nText"
+                          name="Demographics" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[rowguid]"
+                          dataType="guid"
+                          name="rowguid" />
+                        <externalMetadataColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].ExternalColumns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          name="ModifiedDate" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Error Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Error Output].Columns[LastName]"
+                          name="LastName" />
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Error Output].Columns[FirstName]"
+                          name="FirstName" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Remplir d_Customer\Load Customers\Sort"
+                  componentClassID="Microsoft.Sort"
+                  contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+                  name="Sort"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                      name="EliminateDuplicates">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the maximum number of threads to use for sorting."
+                      expressionType="Notify"
+                      name="MaximumThreads">-1</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Remplir d_Customer\Load Customers\Sort.Inputs[Sort Input]"
+                      name="Sort Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort.Inputs[Sort Input].Columns[BusinessEntityID]"
+                          cachedDataType="i4"
+                          cachedName="BusinessEntityID"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].Columns[BusinessEntityID]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">1</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort.Inputs[Sort Input].Columns[LastName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="LastName"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].Columns[LastName]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort.Inputs[Sort Input].Columns[FirstName]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="FirstName"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].Columns[FirstName]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\Sort.Outputs[Sort Output]"
+                      isSorted="true"
+                      name="Sort Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort.Outputs[Sort Output].Columns[BusinessEntityID]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort.Outputs[Sort Output].Columns[BusinessEntityID]"
+                          name="BusinessEntityID"
+                          sortKeyPosition="1">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].Columns[BusinessEntityID]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort.Outputs[Sort Output].Columns[LastName]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort.Outputs[Sort Output].Columns[LastName]"
+                          name="LastName">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].Columns[LastName]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort.Outputs[Sort Output].Columns[FirstName]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort.Outputs[Sort Output].Columns[FirstName]"
+                          name="FirstName">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output].Columns[FirstName]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Remplir d_Customer\Load Customers\Sort 1"
+                  componentClassID="Microsoft.Sort"
+                  contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+                  name="Sort 1"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                      name="EliminateDuplicates">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the maximum number of threads to use for sorting."
+                      expressionType="Notify"
+                      name="MaximumThreads">-1</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Remplir d_Customer\Load Customers\Sort 1.Inputs[Sort Input]"
+                      name="Sort Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort 1.Inputs[Sort Input].Columns[PersonID]"
+                          cachedDataType="i4"
+                          cachedName="PersonID"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[PersonID]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">1</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort 1.Inputs[Sort Input].Columns[AccountNumber]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="10"
+                          cachedName="AccountNumber"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[AccountNumber]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort 1.Inputs[Sort Input].Columns[CustomerID]"
+                          cachedDataType="i4"
+                          cachedName="CustomerID"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[CustomerID]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort 1.Inputs[Sort Input].Columns[ModifiedDate]"
+                          cachedDataType="dbTimeStamp"
+                          cachedName="ModifiedDate"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[ModifiedDate]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output]"
+                      isSorted="true"
+                      name="Sort Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output].Columns[PersonID]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output].Columns[PersonID]"
+                          name="PersonID"
+                          sortKeyPosition="1">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[PersonID]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output].Columns[AccountNumber]"
+                          codePage="1252"
+                          dataType="str"
+                          length="10"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output].Columns[AccountNumber]"
+                          name="AccountNumber">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[AccountNumber]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output].Columns[CustomerID]"
+                          dataType="i4"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output].Columns[CustomerID]"
+                          name="CustomerID">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[CustomerID]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output].Columns[ModifiedDate]"
+                          dataType="dbTimeStamp"
+                          lineageId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output].Columns[ModifiedDate]"
+                          name="ModifiedDate">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output].Columns[ModifiedDate]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Remplir d_Customer\Load Customers.Paths[Data Conversion Output]"
+                  endId="Package\Remplir d_Customer\Load Customers\Lookup.Inputs[Lookup Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Remplir d_Customer\Load Customers.Paths[Lookup Match Output]"
+                  endId="Package\Remplir d_Customer\Load Customers\Customer_STA.Inputs[OLE DB Destination Input]"
+                  name="Lookup Match Output"
+                  startId="Package\Remplir d_Customer\Load Customers\Lookup.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Remplir d_Customer\Load Customers.Paths[Lookup No Match Output]"
+                  endId="Package\Remplir d_Customer\Load Customers\D_Customer.Inputs[OLE DB Destination Input]"
+                  name="Lookup No Match Output"
+                  startId="Package\Remplir d_Customer\Load Customers\Lookup.Outputs[Lookup No Match Output]" />
+                <path
+                  refId="Package\Remplir d_Customer\Load Customers.Paths[Merge Join Output]"
+                  endId="Package\Remplir d_Customer\Load Customers\Converte Account Number.Inputs[Data Conversion Input]"
+                  name="Merge Join Output"
+                  startId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Outputs[Merge Join Output]" />
+                <path
+                  refId="Package\Remplir d_Customer\Load Customers.Paths[OLE DB Source Output]"
+                  endId="Package\Remplir d_Customer\Load Customers\Sort.Inputs[Sort Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Remplir d_Customer\Load Customers\Person_src.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Remplir d_Customer\Load Customers.Paths[OLE DB Source Output1]"
+                  endId="Package\Remplir d_Customer\Load Customers\Sort 1.Inputs[Sort Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Remplir d_Customer\Load Customers\Customer_src.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Remplir d_Customer\Load Customers.Paths[Sort Output]"
+                  endId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Left Input]"
+                  name="Sort Output"
+                  startId="Package\Remplir d_Customer\Load Customers\Sort 1.Outputs[Sort Output]" />
+                <path
+                  refId="Package\Remplir d_Customer\Load Customers.Paths[Sort Output1]"
+                  endId="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person.Inputs[Merge Join Right Input]"
+                  name="Sort Output"
+                  startId="Package\Remplir d_Customer\Load Customers\Sort.Outputs[Sort Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Remplir d_Customer\Truncate D_Customer_STA"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{72C1CF6E-DE1A-41CC-878C-83B3A5F5A543}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Truncate D_Customer_STA"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{43ECC4AA-1A24-47F3-8CD0-DD2F3B6F4AC2}"
+              SQLTask:SqlStatementSource="truncate table d_customer_sta" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Remplir d_Customer\Update D_Custumers from DB_Staging(Customer_STA)"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{28AA7F7B-8FBF-48CD-AC5B-6042C4FDA55B}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Update D_Custumers from DB_Staging(Customer_STA)"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{2BB2CE65-4316-40E6-8412-8197B63FBFA3}"
+              SQLTask:SqlStatementSource="update D_Customer &#xA;  set FirstName = sta.FirstName,&#xA;  LastName = sta.LastName&#xA;  from [DB_Staging].[dbo].[D_Customer_STA] sta where sta.ID_Customer = D_Customer.ID_Customer;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Remplir d_Customer.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{FB458647-56C6-4ECB-AB70-AF0DA8BBF279}"
+          DTS:From="Package\Remplir d_Customer\Load Customers"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Remplir d_Customer\Update D_Custumers from DB_Staging(Customer_STA)" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Remplir d_Customer.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{4CD4904D-9A03-4892-805F-33DBF43F530C}"
+          DTS:From="Package\Remplir d_Customer\Truncate D_Customer_STA"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Remplir d_Customer\Load Customers" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Remplir d_Customer\Load Customers"
+          TopLeft="108,149" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Remplir d_Customer\Truncate D_Customer_STA"
+          TopLeft="105,14" />
+        <NodeLayout
+          Size="339,42"
+          Id="Package\Remplir d_Customer\Update D_Custumers from DB_Staging(Customer_STA)"
+          TopLeft="33,249" />
+        <EdgeLayout
+          Id="Package\Remplir d_Customer.PrecedenceConstraints[Constraint]"
+          TopLeft="185.5,191">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17,58"
+              Start="0,0"
+              End="17,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="4,29" />
+                  <mssgle:LineSegment
+                    End="13,29" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13,29"
+                    Point2="17,29"
+                    Point3="17,33" />
+                  <mssgle:LineSegment
+                    End="17,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Remplir d_Customer.PrecedenceConstraints[Constraint 1]"
+          TopLeft="208,56">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-22.5,93"
+              Start="0,0"
+              End="-22.5,85.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.5"
+                    Point2="0,46.5"
+                    Point3="-4,46.5" />
+                  <mssgle:LineSegment
+                    End="-18.5,46.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,46.5"
+                    Point2="-22.5,46.5"
+                    Point3="-22.5,50.5" />
+                  <mssgle:LineSegment
+                    End="-22.5,85.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="419,408"
+          Size="419,451"
+          Id="Package\Remplir d_Customer"
+          TopLeft="192,90" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Remplir d_Customer\Load Customers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="137,42"
+          Id="Package\Remplir d_Customer\Load Customers\D_Customer"
+          TopLeft="276,515" />
+        <NodeLayout
+          Size="192,42"
+          Id="Package\Remplir d_Customer\Load Customers\Merge Cutomers-Person"
+          TopLeft="396,146" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Remplir d_Customer\Load Customers\Customer_src"
+          TopLeft="669,69" />
+        <NodeLayout
+          Size="98,42"
+          Id="Package\Remplir d_Customer\Load Customers\Sort"
+          TopLeft="205,153" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Remplir d_Customer\Load Customers\Lookup"
+          TopLeft="414,317" />
+        <NodeLayout
+          Size="107,42"
+          Id="Package\Remplir d_Customer\Load Customers\Sort 1"
+          TopLeft="682,140" />
+        <NodeLayout
+          Size="148,42"
+          Id="Package\Remplir d_Customer\Load Customers\Customer_STA"
+          TopLeft="577,511" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Remplir d_Customer\Load Customers\Person_src"
+          TopLeft="186,81" />
+        <NodeLayout
+          Size="203,42"
+          Id="Package\Remplir d_Customer\Load Customers\Converte Account Number"
+          TopLeft="378,224" />
+        <EdgeLayout
+          Id="Package\Remplir d_Customer\Load Customers.Paths[Sort Output]"
+          TopLeft="682,164">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-94,0"
+              Start="0,0"
+              End="-86.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-86.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Remplir d_Customer\Load Customers.Paths[OLE DB Source Output1]"
+          TopLeft="738,111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29"
+              Start="0,0"
+              End="0,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Remplir d_Customer\Load Customers.Paths[OLE DB Source Output]"
+          TopLeft="252.5,123">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30"
+              Start="0,0"
+              End="0,22.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Remplir d_Customer\Load Customers.Paths[Merge Join Output]"
+          TopLeft="492,188">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.5,36"
+              Start="0,0"
+              End="-12.5,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14"
+                    Point2="0,18"
+                    Point3="-4,18" />
+                  <mssgle:LineSegment
+                    End="-8.5,18" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.5,18"
+                    Point2="-12.5,18"
+                    Point3="-12.5,22" />
+                  <mssgle:LineSegment
+                    End="-12.5,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Remplir d_Customer\Load Customers.Paths[Lookup No Match Output]"
+          TopLeft="453,359">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-108.5,156"
+              Start="0,0"
+              End="-108.5,148.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,59.7068062827225" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,59.7068062827225"
+                    Point2="0,63.7068062827225"
+                    Point3="-4,63.7068062827225" />
+                  <mssgle:LineSegment
+                    End="-104.5,63.7068062827225" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-104.5,63.7068062827225"
+                    Point2="-108.5,63.7068062827225"
+                    Point3="-108.5,67.7068062827225" />
+                  <mssgle:LineSegment
+                    End="-108.5,148.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-110.05638671875,68.7068062827225,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Remplir d_Customer\Load Customers.Paths[Data Conversion Output]"
+          TopLeft="479.5,266">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9,51"
+              Start="0,0"
+              End="-9,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.5"
+                    Point2="0,25.5"
+                    Point3="-4,25.5" />
+                  <mssgle:LineSegment
+                    End="-5,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5,25.5"
+                    Point2="-9,25.5"
+                    Point3="-9,29.5" />
+                  <mssgle:LineSegment
+                    End="-9,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Remplir d_Customer\Load Customers.Paths[Sort Output1]"
+          TopLeft="303,170.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="93,0"
+              Start="0,0"
+              End="85.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="85.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Remplir d_Customer\Load Customers.Paths[Lookup Match Output]"
+          TopLeft="488,359">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="163,152"
+              Start="0,0"
+              End="163,144.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,58.0732984293194" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,58.0732984293194"
+                    Point2="0,62.0732984293194"
+                    Point3="4,62.0732984293194" />
+                  <mssgle:LineSegment
+                    End="159,62.0732984293194" />
+                  <mssgle:CubicBezierSegment
+                    Point1="159,62.0732984293194"
+                    Point2="163,62.0732984293194"
+                    Point3="163,66.0732984293194" />
+                  <mssgle:LineSegment
+                    End="163,144.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="33.30861328125,67.0732984293194,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Remplir d_Customer\Load Customers\D_Customer">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Remplir d_Customer\Load Customers\Customer_src">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Remplir d_Customer\Load Customers\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[D_Customer]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Remplir d_Customer\Load Customers\Customer_STA">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Remplir d_Customer\Load Customers\Person_src">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
