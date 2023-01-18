@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="TP1 Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{72F57B24-5FDB-49E0-9890-6942A95BA9BD}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{8FB6963E-4DDA-40E4-86DF-B62BD357B41A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1051,9 +1051,9 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Remplir Produit"
-          TopLeft="302,186" />
+          TopLeft="299.85714282065,153.882352490739" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1063,27 +1063,27 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="156,42"
+          Size="156,41.6"
           Id="Package\Remplir Produit\Data Conversion"
           TopLeft="341,253" />
         <NodeLayout
-          Size="154,42"
+          Size="153.6,41.6"
           Id="Package\Remplir Produit\Derived Column"
           TopLeft="341.4285714529,180.117646779981" />
         <NodeLayout
-          Size="172,42"
+          Size="172,41.6"
           Id="Package\Remplir Produit\Flat File Destination"
           TopLeft="335,433" />
         <NodeLayout
-          Size="117,42"
+          Size="116.8,41.6"
           Id="Package\Remplir Produit\Produits"
           TopLeft="368,334" />
         <NodeLayout
-          Size="122,42"
+          Size="121.6,41.6"
           Id="Package\Remplir Produit\Products"
           TopLeft="358,1" />
         <NodeLayout
-          Size="155,42"
+          Size="155.2,41.6"
           Id="Package\Remplir Produit\Conditional Split"
           TopLeft="337.5,78.5" />
         <EdgeLayout

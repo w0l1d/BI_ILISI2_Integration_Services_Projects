@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.33027.164
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "TP1 Integration Services Project", "TP1 Integration Services Project\TP1 Integration Services Project.dtproj", "{272D60D1-99FE-4336-B2C5-AF7450084A31}"
 EndProject
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "SalesOLAP", "SalesOLAP\SalesOLAP.dwproj", "{0C563718-EEB7-43AA-8F77-894604954995}"
+EndProject
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "SALES_ETL", "..\SALES_ETL\SALES_ETL\SALES_ETL.dtproj", "{10711DB1-7CED-4A2C-AEB8-207446141A05}"
+EndProject
+Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "Payments Integration Services Project", "Payments Integration Services Project\Payments Integration Services Project.dtproj", "{9CC5AC2E-DB62-4C6F-BD1E-6E7650FE3960}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Development|Default = Development|Default
@@ -12,6 +18,13 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{272D60D1-99FE-4336-B2C5-AF7450084A31}.Development|Default.ActiveCfg = Development
 		{272D60D1-99FE-4336-B2C5-AF7450084A31}.Development|Default.Build.0 = Development
+		{0C563718-EEB7-43AA-8F77-894604954995}.Development|Default.ActiveCfg = Development
+		{0C563718-EEB7-43AA-8F77-894604954995}.Development|Default.Build.0 = Development
+		{0C563718-EEB7-43AA-8F77-894604954995}.Development|Default.Deploy.0 = Development
+		{10711DB1-7CED-4A2C-AEB8-207446141A05}.Development|Default.ActiveCfg = Development
+		{10711DB1-7CED-4A2C-AEB8-207446141A05}.Development|Default.Build.0 = Development
+		{9CC5AC2E-DB62-4C6F-BD1E-6E7650FE3960}.Development|Default.ActiveCfg = Development
+		{9CC5AC2E-DB62-4C6F-BD1E-6E7650FE3960}.Development|Default.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
